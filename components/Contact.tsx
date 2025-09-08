@@ -3,7 +3,11 @@ import React from 'react'
 import Image from 'next/image'
 import { useState } from 'react'
 
-const Contact = () => {
+type ContactProps = {
+  isDarkMode: boolean;
+};
+
+const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
     const [result, setResult] = useState("");
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

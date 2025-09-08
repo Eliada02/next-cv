@@ -2,7 +2,12 @@ import { assets } from '@/assets/assets'
 import Image from 'next/image'
 import React, { useState,useEffect, useRef } from 'react'
 
-const Navbar = () => {
+type NavbarProps = {
+  isDarkMode: boolean;
+  setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Navbar: React.FC<NavbarProps> = ({isDarkMode, setIsDarkMode}) => {
   // state to control mobile menu
   const [isOpen, setIsOpen] = useState(false)
   const sideMenuRef = useRef<HTMLUListElement>(null);
@@ -37,7 +42,8 @@ const Navbar = () => {
 
   return (
     <>
-      <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%]'>
+      <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%]
+      dark:hidden'>
         <Image src={assets.header_bg_color} alt='blur' className='w-full ' />
       </div>
 
@@ -57,8 +63,8 @@ const Navbar = () => {
 
         {/* Right side buttons */}
         <div className='flex items-center gap-4'>
-          <button>
-            <Image src={assets.moon_icon} alt='' className='w-6 ' />
+          <button onClick={() => setIsDarkMode(prev => !prev)} className='p-2 border border-gray-400 rounded-full'>
+            <Image src={isDarkMode ? assets.sun_icon : assets.moon_icon} alt='' className='w-6 ' />
           </button>
 
           <a

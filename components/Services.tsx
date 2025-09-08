@@ -3,7 +3,10 @@ import { serviceData } from '@/assets/data'
 import Image from 'next/image'
 import { assets } from '@/assets/data/assets'
 
-const Services = () => {
+type ServiceProps = {
+  isDarkMode: boolean;
+};
+const Services: React.FC<ServiceProps> = ({ isDarkMode }) => {
   return (
     <div id='services' className='w-full px-[12%] py-10 scroll-mt-20'>
         <h4 className='text-center mb-2 text-lg font-Ovo'>What I offer</h4>
