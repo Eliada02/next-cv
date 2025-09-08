@@ -27,16 +27,22 @@ const Work = () => {
               <div className="m-2">
                 <h2 className="font-semibold">{project.title}</h2>
                 <p className="text-sm text-gray-700">{project.description}</p>
+                
               </div>
             </div>
 
             <div className="border rounded-full border-black w-9
-            aspect-square flex items-center justify-center shadow-[2px_2px_0px_#000]">
+            aspect-square flex items-center justify-center shadow-[2px_2px_0px_#000] group-hover:bg-lime-300 transition">
               <Image src={assets.send_icon} alt="" className="w-5" />
             </div>
           </div>
         ))}
       </div>
+
+      <a href=""
+      className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3
+      px-10 mx-auto my-20 hover:bg-lightHover duration-500">Show More <Image src={assets.right_arrow_bold} alt='Right arrow' 
+      className="w-4"/></a>
     </div>
   );
 };
