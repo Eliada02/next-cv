@@ -4,8 +4,11 @@ import { assets } from '@/assets/assets'
 import { infoList } from '@/assets/data/infoList'
 import { toolsData } from '@/assets/data/toolsData'
 
+type AboutProps = {
+  isDarkMode: boolean;
+};
 
-const About = () => {
+const About: React.FC<AboutProps> = ({ isDarkMode }) => {
   return (
     <div id='about' className='w-full px-[12%] py-10 scroll-mt-20'>
         <h4 className='text-center mb-2 text-lg font-Ovo'>Introduction</h4>

@@ -3,7 +3,9 @@ import { workData } from "@/assets/data";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
 
-const Work = () => {
+import PropTypes from "prop-types";
+
+const Work = ({ isDarkMode }) => {
   return (
     <div id="work" className="w-full px-[12%] py-10 scroll-mt-20">
       <h4 className="text-center mb-2 text-lg font-Ovo">My Portofolio</h4>
@@ -45,6 +47,11 @@ const Work = () => {
       className="w-4"/></a>
     </div>
   );
+};
+
+
+Work.propTypes = {
+  isDarkMode: PropTypes.bool.isRequired,
 };
 
 export default Work;
