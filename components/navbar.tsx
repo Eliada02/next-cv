@@ -1,13 +1,39 @@
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useState,useEffect, useRef } from 'react'
 
 const Navbar = () => {
   // state to control mobile menu
   const [isOpen, setIsOpen] = useState(false)
+  const sideMenuRef = useRef<HTMLUListElement>(null);
+  
+  const[isScrolled,setIsScrolled] = useState(false)
+  
+ const openMenu = () => setIsOpen(true)
+ const closeMenu = () => {
+  setIsOpen(false);
 
-  const openMenu = () => setIsOpen(true)
-  const closeMenu = () => setIsOpen(false)
+  if (sideMenuRef.current) {
+    sideMenuRef.current.style.transform = 'translateX(16rem)';
+  }
+};
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -15,13 +41,13 @@ const Navbar = () => {
         <Image src={assets.header_bg_color} alt='blur' className='w-full ' />
       </div>
 
-      <nav className='w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50'>
+      <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 ${isScrolled ? 'backdrop-blur-lg bg-white bg-opacity-50 shadow-sm' : ''  }`}>
         <a href="#top">
           <Image src={assets.logo} alt="Logo" className='w-28 cursor-pointer mr-14' />
         </a>
 
         {/* Desktop Menu */}
-        <ul className='hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 bg-white shadow-sm bg-opacity-50'>
+        <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${isScrolled ? '' : 'bg-white shadow-sm bg-opacity-100'} `}>
           <li><a className='font-Ovo' href='#top'>Home</a></li>
           <li><a className='font-Ovo' href='#about'>About me</a></li>
           <li><a className='font-Ovo' href='#services'>Services</a></li>

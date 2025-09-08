@@ -8,15 +8,22 @@ export default {
     extend: {
       colors: {
         lightHover:"#fcf4ff",
-        darkHover:"#3b0764",
-        darkTheme:"#1a1a1a",
+        darkHover:"#2a004a",
+        darkTheme:"#11001F",
       },
       fontFamily: {
         outfit: ['Outfit', 'sans-serif'],
         ovo: ['Ovo', 'serif'],
       },
+      boxShadow: {
+        'black':'4px 4px 0px #000',
+        'white':'4px 4px 0px #fff',
+      },
 
     },
+    gridTemplateColumns: {
+      'auto':'repeat(auto-fit, minmax(200px, 1fr))',
+    }
   },
   plugins: [],
 }
